@@ -1,0 +1,30 @@
+﻿using BookReadLibrary;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace BookReadList
+{
+    internal static class Program
+    {
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            if (!Directory.Exists(TextSaveManager.FilePath))
+            {
+                Directory.CreateDirectory(TextSaveManager.FilePath);
+            }
+
+            Application.Run(new BookReadUI());
+        }
+    }
+}
