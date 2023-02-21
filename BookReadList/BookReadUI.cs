@@ -80,6 +80,9 @@ namespace BookReadList
             return true;
         }
 
+        /// <summary>
+        /// Updates Listbox.
+        /// </summary>
         private void UpdateList()
         {
             lbxList.DataSource = null;
@@ -87,9 +90,20 @@ namespace BookReadList
             lbxList.DisplayMember= "FullInfo";
         }
 
+        /// <summary>
+        /// Removes selected item in listbox from data file and books list.
+        /// </summary>
         private void btnRemove_Click(object sender, EventArgs e)
         {
             // TODO - ListBox'a seçili olan item'ın silinmesi yazılacak.
+
+            BookModel book = (BookModel)lbxList.SelectedItem;
+
+            books.Remove(book);
+
+            TextSaveManager.SaveToFile(books);
+
+            UpdateList();
         }
     }
 }
